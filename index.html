@@ -29,6 +29,11 @@
       h6 {
         font-family: "AmazonEmberDisplay_BdIt", "Poppins", sans-serif;
       }
+
+      .story-text {
+        font-family: "AmazonEmberDisplay_RdIt", "Poppins", sans-serif;
+      }
+
       * {
         margin: 0;
         padding: 0;
@@ -107,6 +112,7 @@
         border-radius: 8px;
         margin-top: 2rem;
       }
+
       .story-text {
         line-height: 1.6;
         color: #1a1a1a;
@@ -141,7 +147,7 @@
   </head>
   <body>
     <div class="container">
-      <h1>✨ AWS AI Storyteller</h1>
+      <h1>✨ AWS AI Storyteller ✨</h1>
 
       <div class="input-section">
         <textarea
@@ -191,7 +197,11 @@
         audioPlayer.style.display = "none";
         // Play background audio only when Generate Story is clicked
         backgroundAudio.volume = 0.3; // Set volume to 30%
-        backgroundAudio.play().catch(error => console.error("Background audio failed to play:", error));
+        backgroundAudio
+          .play()
+          .catch((error) =>
+            console.error("Background audio failed to play:", error)
+          );
         try {
           const response = await fetch("/generate-story", {
             method: "POST",
