@@ -37,7 +37,7 @@
       }
       body {
         font-family: "AmazonEmberDisplay_RdIt", "Poppins", sans-serif;
-        background: url("background.png") center center no-repeat;
+        background: url("src/background.png") center center no-repeat;
         background-size: cover;
         min-height: 100vh;
         display: flex;
@@ -164,7 +164,7 @@
     </div>
 
     <audio id="background-audio" loop style="display: none">
-      <source src="harry_potter_st.mp3" type="audio/mpeg">
+      <source src="sounds/harry_potter_st.mp3" type="audio/mpeg" />
     </audio>
 
     <script>
@@ -183,7 +183,11 @@
         // Start background audio on page load
         const backgroundAudio = document.getElementById("background-audio");
         backgroundAudio.volume = 0.3; // Set volume to 30%
-        backgroundAudio.play().catch(error => console.error("Background audio failed to play:", error));
+        backgroundAudio
+          .play()
+          .catch((error) =>
+            console.error("Background audio failed to play:", error)
+          );
       };
       async function generateStory() {
         const promptInput = document.getElementById("promptInput");
@@ -200,7 +204,11 @@
         audioPlayer.style.display = "none";
         // Ensure background audio is playing when generating story
         if (backgroundAudio.paused) {
-          backgroundAudio.play().catch(error => console.error("Background audio failed to play:", error));
+          backgroundAudio
+            .play()
+            .catch((error) =>
+              console.error("Background audio failed to play:", error)
+            );
         }
         try {
           const response = await fetch("/generate-story", {
