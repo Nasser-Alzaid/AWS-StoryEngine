@@ -170,16 +170,11 @@
     <script>
       // On page load, display last story if available
       window.onload = function () {
-        const lastStory = localStorage.getItem("lastStory");
-        const lastMp3 = localStorage.getItem("lastMp3");
-        if (lastStory) {
-          document.getElementById("storyOutput").textContent = lastStory;
-        }
-        if (lastMp3) {
-          const audioPlayer = document.getElementById("audioPlayer");
-          audioPlayer.src = lastMp3;
-          audioPlayer.style.display = "block";
-        }
+        // Clear the story and audio on page load
+        document.getElementById("storyOutput").textContent = "";
+        document.getElementById("audioPlayer").style.display = "none";
+        localStorage.removeItem("lastStory");
+        localStorage.removeItem("lastMp3");
       };
       async function generateStory() {
         const promptInput = document.getElementById("promptInput");
