@@ -180,14 +180,6 @@
           audioPlayer.src = lastMp3;
           audioPlayer.style.display = "block";
         }
-        // Start background audio on page load
-        const backgroundAudio = document.getElementById("background-audio");
-        backgroundAudio.volume = 0.3; // Set volume to 30%
-        backgroundAudio
-          .play()
-          .catch((error) =>
-            console.error("Background audio failed to play:", error)
-          );
       };
       async function generateStory() {
         const promptInput = document.getElementById("promptInput");
@@ -202,14 +194,9 @@
         loading.style.display = "block";
         storyOutput.textContent = "";
         audioPlayer.style.display = "none";
-        // Ensure background audio is playing when generating story
-        if (backgroundAudio.paused) {
-          backgroundAudio
-            .play()
-            .catch((error) =>
-              console.error("Background audio failed to play:", error)
-            );
-        }
+        // Play background audio only when Generate Story is clicked
+        backgroundAudio.volume = 0.3; // Set volume to 30%
+        backgroundAudio.play().catch(error => console.error("Background audio failed to play:", error));
         try {
           const response = await fetch("/generate-story", {
             method: "POST",
