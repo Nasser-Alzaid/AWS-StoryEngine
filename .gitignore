@@ -1,2 +1,4 @@
-#unwanted files:
+#unwanted files:    
 .env
+harry_potter_story.mp3
+__pycache__
