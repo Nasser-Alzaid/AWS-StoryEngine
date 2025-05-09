@@ -119,6 +119,16 @@
         color: #1a1a1a;
         white-space: pre-wrap;
       }
+      .word {
+        display: inline-block;
+        opacity: 0;
+        transform: translateY(30px);
+        transition: opacity 0.8s ease, transform 0.8s ease;
+      }
+      .word.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
       .loading {
         display: none;
         text-align: center;
@@ -127,6 +137,15 @@
       .loading::after {
         content: "...";
         animation: dots 1.5s steps(5, end) infinite;
+      }
+
+      .audio-player {
+        margin-top: 1rem;
+      }
+      audio {
+        width: 100%;
+        border-radius: 8px;
+        padding: 0.5rem;
       }
       @keyframes dots {
         0%,
@@ -161,12 +180,12 @@
       <div class="loading" id="loading">Generating your story</div>
 
       <div class="story-section">
-        <div class="story-text" id="storyOutput"></div>
         <audio
           id="audioPlayer"
           controls
           style="display: none; margin-top: 1rem"
         ></audio>
+        <div class="story-text" id="storyOutput"></div>
       </div>
     </div>
 
